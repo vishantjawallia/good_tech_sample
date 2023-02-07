@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:good_tech_sample/config/Paletes.dart';
+import 'package:good_tech_sample/widgets/map.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sizer/sizer.dart';
+import 'package:swipebuttonflutter/swipebuttonflutter.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
@@ -19,14 +21,42 @@ class Home extends StatelessWidget {
             children: [
               upperButton(),
               _buildGoogleMap(),
-              // _distanceBox(),
+              _distanceBox(),
               _pickUpFrom(),
               _userName(),
+              _swiperBtn(),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Container _swiperBtn() {
+    return Container(
+              height: 58,
+              margin: const EdgeInsets.symmetric(horizontal: 10),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Paletes.green,
+                borderRadius: BorderRadius.circular(60),
+              ),
+              child: SwipingButton(
+                text: "Accept Order",
+                swipeButtonColor: Paletes.white,
+                iconColor: Paletes.black,
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                swipePercentageNeeded: 0.8,
+                onSwipeCallback: () {
+                  print("Called back");
+                },
+                height: 40,
+                buttonTextStyle: const TextStyle(fontWeight: FontWeight.w400),
+                backgroundColor: Paletes.green,
+
+                // width: 80,
+              ),
+            );
   }
 
   _pickUpFrom() {
@@ -147,64 +177,128 @@ class Home extends StatelessWidget {
     );
   }
 
-  Container _distanceBox() {
+  _distanceBox() {
     return Container(
-      child: GridView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        padding: const EdgeInsets.all(18),
-        itemCount: 10,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 0.92,
-          crossAxisSpacing: 0,
-          mainAxisSpacing: 0,
-          mainAxisExtent: 40.sp,
-        ),
-        itemBuilder: (context, index) {
-          return Container(
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              borderRadius: index.isEven
-                  ? const BorderRadius.only(
-                      topLeft: Radius.zero,
-                      bottomLeft: Radius.zero,
-                    )
-                  : const BorderRadius.only(
-                      topRight: Radius.zero,
-                      bottomRight: Radius.zero,
-                      bottomLeft: Radius.zero,
-                      topLeft: Radius.zero,
+      padding: const EdgeInsets.all(18),
+      child: Column(
+        children: [
+          Row(
+            children: <Widget>[
+              Expanded(
+                flex: 6,
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(6),
                     ),
-              border: index.isEven
-                  ? const Border(
-                      bottom: BorderSide(width: 0.6),
-                      top: BorderSide(width: 0.6),
-                      right: BorderSide(width: 0.6),
-                      left: BorderSide(width: 0.6),
-                    )
-                  : const Border(
-                      bottom: BorderSide(width: 0.6),
-                      top: BorderSide(width: 0.6),
-                      right: BorderSide(width: 0.6),
+                    border: Border.all(width: 0.6),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Text(
+                        'Top Distance',
+                        style: TextStyle(color: Paletes.grey),
+                      ),
+                      Text(
+                        '6km',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 6,
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(6),
                     ),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Text(
-                  'Top Distance',
-                  style: TextStyle(color: Paletes.grey),
+                    border: Border.all(width: 0.6),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Text(
+                        'Expected Earning',
+                        style: TextStyle(color: Paletes.grey),
+                      ),
+                      Text(
+                        'Rs. 50 ',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
                 ),
-                Text(
-                  '6km',
-                  style: TextStyle(fontWeight: FontWeight.w500),
+              ),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              Expanded(
+                flex: 6,
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(6),
+                    ),
+                    border: Border.all(width: 0.6),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Text(
+                        'Pickup: ',
+                        style: TextStyle(color: Paletes.grey),
+                      ),
+                      Text(
+                        '6km',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
                 ),
-              ],
-            ),
-          );
-        },
+              ),
+              Expanded(
+                flex: 6,
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
+                      bottomRight: Radius.circular(6),
+                    ),
+                    border: Border.all(width: 0.6),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Text(
+                        'Drop: ',
+                        style: TextStyle(color: Paletes.grey),
+                      ),
+                      Text(
+                        '6km',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -216,33 +310,8 @@ class Home extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-          height: 30.h,
-          child: GoogleMap(
-            mapType: MapType.normal,
-            trafficEnabled: false,
-            compassEnabled: true,
-            rotateGesturesEnabled: true,
-            scrollGesturesEnabled: false,
-            tiltGesturesEnabled: true,
-            zoomControlsEnabled: false,
-            zoomGesturesEnabled: true,
-            myLocationButtonEnabled: false,
-            myLocationEnabled: true,
-            mapToolbarEnabled: true,
-            markers: Set.of((_marker != null) ? [_marker!] : []),
-            initialCameraPosition: CameraPosition(
-              target: _initialPosition,
-              zoom: 14,
-            ),
-            onMapCreated: (GoogleMapController controller) async {
-              _controller = controller;
-              await _addMarker(28.7041, 77.1025);
-            },
-            onTap: (position) {
-              // Common.buildErrorSnackbar(context, "You can't select loaction through map ?");
-            },
-            // circles: circles,
-          ),
+          height: 32.h,
+          child: MapWidget(),
         ),
         const Padding(
           padding: EdgeInsets.symmetric(vertical: 22),
