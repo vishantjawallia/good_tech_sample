@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:good_tech_sample/config/Paletes.dart';
-import 'package:good_tech_sample/screens/Home.dart';
+import 'package:good_tech_sample/screens/home.dart';
 import 'package:good_tech_sample/screens/order_detail.dart';
+import 'package:good_tech_sample/screens/trip_summary.dart';
 import 'package:sizer/sizer.dart';
 
 void main() async {
@@ -23,10 +24,11 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: Paletes.white,
             primarySwatch: Colors.blue,
           ),
-          initialRoute: '/',
+          initialRoute: 'order_detail',
           routes: {
             '/': (context) => Home(),
             'order_detail': (context) => OrderDetail(),
+            'trip_summary': (context) => const TripSummary(),
             // 'map': (context) => MapScreen(),
           },
         );

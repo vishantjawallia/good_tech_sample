@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:good_tech_sample/config/Paletes.dart';
+import 'package:good_tech_sample/widgets/SwipeButtom.dart';
 import 'package:good_tech_sample/widgets/map.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sizer/sizer.dart';
-import 'package:swipebuttonflutter/swipebuttonflutter.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
@@ -19,44 +19,20 @@ class Home extends StatelessWidget {
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              upperButton(),
+              _upperButton(),
               _buildGoogleMap(),
               _distanceBox(),
               _pickUpFrom(),
               _userName(),
-              _swiperBtn(),
+              SwipeButtom(
+                name: 'Accept Order',
+                onSwipeCallback: () => null,
+              ),
             ],
           ),
         ),
       ),
     );
-  }
-
-  Container _swiperBtn() {
-    return Container(
-              height: 58,
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Paletes.green,
-                borderRadius: BorderRadius.circular(60),
-              ),
-              child: SwipingButton(
-                text: "Accept Order",
-                swipeButtonColor: Paletes.white,
-                iconColor: Paletes.black,
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                swipePercentageNeeded: 0.8,
-                onSwipeCallback: () {
-                  print("Called back");
-                },
-                height: 40,
-                buttonTextStyle: const TextStyle(fontWeight: FontWeight.w400),
-                backgroundColor: Paletes.green,
-
-                // width: 80,
-              ),
-            );
   }
 
   _pickUpFrom() {
@@ -354,7 +330,7 @@ class Home extends StatelessWidget {
   }
 
   /* --------------------------------------------------- upperButton -------------------------------------------------- */
-  Container upperButton() {
+  Container _upperButton() {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
       alignment: Alignment.centerRight,

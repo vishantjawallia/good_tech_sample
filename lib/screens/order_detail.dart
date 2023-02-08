@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:good_tech_sample/config/Paletes.dart';
+import 'package:good_tech_sample/widgets/SwipeButtom.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sizer/sizer.dart';
 
@@ -24,11 +25,500 @@ class OrderDetail extends StatelessWidget {
                 _orderId(),
                 _collectCash(),
                 _tanishWidget(),
+                _orderDetail(),
+                _itemTotal(),
+                _grandTotal(),
+                _bottomDetail(),
+                SwipeButtom(
+                  margin: const EdgeInsets.symmetric(vertical: 14, horizontal: 2),
+                  name: 'Accept Order',
+                  onSwipeCallback: () => null,
+                )
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Column _bottomDetail() {
+    return Column(
+      children: [
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 6),
+          alignment: Alignment.centerLeft,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Order Number',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Paletes.grey,
+                  fontSize: 13,
+                ),
+              ),
+              SizedBox(height: 0.3.h),
+              Text(
+                '43567999',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 6),
+          alignment: Alignment.centerLeft,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Payment',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Paletes.grey,
+                  fontSize: 13,
+                ),
+              ),
+              SizedBox(height: 0.3.h),
+              Text(
+                'Paid: Using Upi',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 6),
+          alignment: Alignment.centerLeft,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Date',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Paletes.grey,
+                  fontSize: 13,
+                ),
+              ),
+              SizedBox(height: 0.3.h),
+              Text(
+                'April 26 ,2023 at 5:30 pm',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 6),
+          alignment: Alignment.centerLeft,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Phone Number',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Paletes.grey,
+                  fontSize: 13,
+                ),
+              ),
+              SizedBox(height: 0.3.h),
+              Text(
+                '8054738366',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 6),
+          alignment: Alignment.centerLeft,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Call Confirmation',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Paletes.grey,
+                  fontSize: 13,
+                ),
+              ),
+              SizedBox(height: 0.3.h),
+              Text(
+                'Yes',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 6),
+          alignment: Alignment.centerLeft,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'order Type',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Paletes.grey,
+                  fontSize: 13,
+                ),
+              ),
+              SizedBox(height: 0.3.h),
+              Text(
+                'Delivery',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Container _grandTotal() {
+    return Container(
+      height: 13.h,
+      padding: EdgeInsets.only(top: 10, bottom: 4),
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(),
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              Text(
+                'Grand Total',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                'Rs. 430',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                ),
+              ),
+            ],
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Paletes.blue.withOpacity(0.3),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  'Donates rs2 to feeding India',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Paletes.blue,
+                  ),
+                ),
+                Text(
+                  'Rs.14',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Paletes.blue,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            child: Text(
+              'Order Detail',
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 18,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container _itemTotal() {
+    return Container(
+      height: 15.h,
+      padding: EdgeInsets.only(top: 10, bottom: 4),
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(),
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              Text(
+                'Item Total',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                'Rs. 430',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              Text(
+                'Couplen(WELCOME)',
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Paletes.blue,
+                ),
+              ),
+              Text(
+                'You saved Rs.60',
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Paletes.blue,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              Text(
+                'Taxes',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Paletes.grey,
+                ),
+              ),
+              Text(
+                'Rs.30',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Paletes.grey,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              Text(
+                'Delivery  Charge',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Paletes.grey,
+                ),
+              ),
+              Text(
+                'Free',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Paletes.grey,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              Text(
+                'Donates rs2 to feeding India',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Paletes.grey,
+                ),
+              ),
+              Text(
+                'Rs.30',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Paletes.grey,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Column _orderDetail() {
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 10, bottom: 4),
+          child: Align(
+            alignment: Alignment.bottomLeft,
+            child: Text(
+              'Order Details',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 18,
+              ),
+            ),
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.only(bottom: 6, top: 4),
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(),
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.vertical_align_bottom),
+                  SizedBox(width: 1.w),
+                  Text(
+                    'Butter Vada Pav',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: Paletes.greyDark,
+                      fontSize: 13,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.vertical_align_bottom),
+                      SizedBox(width: 1.w),
+                      Text(
+                        'X Rs.30',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          color: Paletes.greyDark,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    'Rs.30',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: Paletes.greyDark,
+                      fontSize: 13,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.only(bottom: 6, top: 4),
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(),
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.vertical_align_bottom),
+                  SizedBox(width: 1.w),
+                  Text(
+                    'Butter Vada Pav',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: Paletes.greyDark,
+                      fontSize: 13,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.vertical_align_bottom),
+                      SizedBox(width: 1.w),
+                      Text(
+                        'X Rs.30',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          color: Paletes.greyDark,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    'Rs.30',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: Paletes.greyDark,
+                      fontSize: 13,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -42,7 +532,7 @@ class OrderDetail extends StatelessWidget {
           ),
           padding: EdgeInsets.symmetric(horizontal: 12, vertical: 18),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,  
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
@@ -186,9 +676,9 @@ class OrderDetail extends StatelessWidget {
                 ),
               ),
               Text(
-                'Order:435634343434',
+                'Order: 435634343434',
                 style: TextStyle(
-                  color: Paletes.grey,
+                  color: Paletes.greyDark,
                   fontSize: 13,
                 ),
               ),
@@ -209,7 +699,7 @@ class OrderDetail extends StatelessWidget {
             'ORDER ID',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Paletes.grey,
+              color: Paletes.greyDark,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -217,7 +707,7 @@ class OrderDetail extends StatelessWidget {
             '435634343434',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Paletes.grey,
+              color: Paletes.greyDark,
               fontWeight: FontWeight.w500,
               fontSize: 36,
             ),
