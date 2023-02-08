@@ -31,7 +31,6 @@ class MyApp extends StatelessWidget {
             '/': (context) => Home(),
             'order_detail': (context) => OrderDetail(),
             'trip_summary': (context) => const TripSummary(),
-            // 'map': (context) => MapScreen(),
           },
         );
       },
